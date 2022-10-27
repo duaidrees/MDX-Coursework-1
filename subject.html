@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coursework 1</title>
+
+</head>
+
+<style>
+    p {
+      background-color: rgb(255, 255, 255);
+      width: 190px;
+      border: 1px solid rgb(0, 87, 128);
+      border-radius: 1em;
+      padding: 25px;
+      margin: 5px;
+    } 
+    button{
+    float: right;
+    background-color: rgb(85, 125, 207);
+    border: 1px solid rgb(85, 125, 207);
+    color:aliceblue;}
+
+    .same{
+     display:inline-block;
+     }
+
+
+    </style>
+
+<body>
+    <div style = "white-space:pre" id="app">
+    <p class = "same" v-if='addItem' >
+<img  v-bind:src="object1.image" style="float:right" alt="" width="60px" height="60px">{{ "Subject: " + this.object1.subject + '\n' +
+                                                                                        "Location: " + this.object1.location + '\n' +
+                                                                                        "Price: £" + this.object1.price + '\n' +
+                                                                                        "Spaces: " + this.object1.spaces }}
+        <button v-on:click= 'addItem'>Add to cart</button></p>
+
+    <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+
+            data: {
+                object1:{
+                    subject: 'Math',
+                    location: 'London',
+                    price: 100,
+                    spaces: 5,
+                    image: 'icon.png'
+                },
+
+            },
+
+
+
+            methods: {
+                addItem: function() {
+                    if(this.object1.spaces >= 1 )
+                    this.object1.spaces = this.object1.spaces - 1;
+                    return this.object1;
+
+
+                },
+
+            }
+        })
+
+    </script>
+</body>
+</html>
